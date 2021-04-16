@@ -1,0 +1,29 @@
+
+#!/bin/bash
+
+echo "Welcome to the organized file system"
+echo "Please enter all the required data"
+echo "Course Name? -->"
+read COURSE
+echo "Course Duration (weeks)? -->"
+read DURATION 
+echo "Number of students? -->"
+read STUDENT
+echo "Exam weight? -->"
+read EXAM
+echo "Project weight? -->"
+read PROJECT 
+
+if [[ ! -e ./COURSE ]];
+then
+mkdir $COURSE && touch $COURSE/readme.txt
+fi 
+
+for ((i=1 ; i<=$STUDENT; i++))
+do 
+    echo "please enter student $i name : -->"
+    read STUDENTNAME
+    mkdir "$COURSE/$STUDENTNAME" 
+done;
+
+echo -e "Course Name: $COURSE \t Course Duration: $DURATION weeks \t Number of Student: $STUDENT \t Exam: $EXAM % \t Project: $PROJECT % \t Prof: 10 %" >> $COURSE/readme.txt
